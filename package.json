@@ -11,7 +11,8 @@
     },
     "devDependencies": {
         "axios": "^0.19",
-        "bootstrap": "^4.0.0",
+        "bulma": "^0.8.0",
+        "bulma-extensions": "^6.0.0",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
@@ -22,5 +23,10 @@
         "sass-loader": "7.*",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "laravel-echo": "^1.6.1",
+        "pusher-js": "^5.0.3"
     }
 }
