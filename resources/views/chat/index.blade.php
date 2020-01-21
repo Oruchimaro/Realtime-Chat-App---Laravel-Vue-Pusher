@@ -9,7 +9,7 @@
             </div>
             @forelse ($friends as $friend)
             <div class="panel-block">
-                {{ $friend->name }}
+                <a href="{{ route('chat.show', $friend->id) }}"> {{ $friend->name }} </a>
             </div>
             @empty
             <div class="panel-block">

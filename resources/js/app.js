@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
+ window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,11 +15,32 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+/* Components */
+ Vue.component('chat', require('./components/Chat.vue').default);
+ Vue.component('chat-composer', require('./components/ChatComposer.vue').default);
 
-// const app = new Vue({
-//     el: '#app'
-// });
+
+
+ const app = new Vue({
+     el: '#app',
+
+     data: {
+        chats: ''
+     },
+
+     created() {
+        //pass the userId from meta-tag to vue root element
+        const userId = $('meta[name="userId"]').attr('content');
+        const friendId = $('meta[name="friendId"]').attr('content');
+
+        if (friendId != undefined) {
+            axios.post('/chat/getChat/' + friendId )
+            .then((response) => {
+                this.chats = response.data;
+            });
+        }
+     },
+ });
 
 
 // Bulma NavBar Burger Script

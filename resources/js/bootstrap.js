@@ -48,6 +48,6 @@ if (token) {
 
  window.Echo = new Echo({
      broadcaster: 'pusher',
-     key: config('broadcasting.connections.pusher.key'),
-     cluster: config('broadcasting.connections.pusher.options.cluster')
+     key:'083ceff4ed67b72c1537',
+     cluster: 'ap1'
  });

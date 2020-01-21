@@ -10,8 +10,6 @@ class FriendController extends Controller
 {
     public function index()
     {
-        $friends = auth()->user()->friends();
-        return view('friend.index')->withFriends($friends);
     }
 
     /**
