@@ -39,7 +39,7 @@
                         <a class="navbar-item " href="{{ route('register') }}">Register</a>
                         @else
                         <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link" href="#">{{ Auth::user()->name }}</a>
+                            <a class="navbar-link" href="/home">{{ Auth::user()->name }}</a>
 
                             <div class="navbar-dropdown">
                                 <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

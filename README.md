@@ -1,8 +1,49 @@
 # About
-    This is a RealTime Chat App Using Laravel using vue and bulma.
+    This is a RealTime Chat App With Laravel using vue and bulma.
+
+    For Chat server we are using pushers free plan for testing.
+
+    this a simple app just for testing and is not at all complete or ready
+    to be used else where.
+
+
 ## How To Use This
 ### Instalation
+    Clone this directory
+
+    Cd into it
+
+    cp .env.example .env
+
+    Create a Database 
+
+    Create a pusher accunt and app.
+
+    Edit Credentials for database and pusher in .env file.
+
+    $ composer install 
+
+    $ npm install
+
+    $ php artisan key:generate
+
+    $ php artisan migrate
+
+    $ php artisan serve
 ### Usage
+    $ php artisan tinker
+
+    $ factory('App\User', 50)->create();
+
+    $ factory('App\Friend', 250)->create();
+
+    $ factory('App\Chat', 5000)->create();
+
+    $php artisan serve 
+
+    Open 2 browser instances and login with w users from db.
+    go to chat and work it out.
+
 ## Documentation 
 ### Installig Bulma
     We Are using this package : https://github.com/laravel-frontend-presets/bulma
