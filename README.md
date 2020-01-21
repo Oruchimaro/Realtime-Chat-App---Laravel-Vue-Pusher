@@ -57,3 +57,21 @@
     Go to .env file and broadcast-driver, default is log, change it to pusher
 
     Dont forget to run $npm install and $npm run dev
+### RealTime Broadcasting
+    After you added the crud logic for users and chat, its time togo for
+    realtime broadcast.
+    Firest we will create a new event.
+
+    $ php artisan make:event BroadcastChat
+
+    now we need to call this event whenever a new chat is created.so we will add
+    an $dispatchesEvents array to chat model.
+    then create a private channel for our messages to be broadcast throught in routes/channels.php file
+
+    After that we can go and add the channel to our Broadcast event, after
+    setting it up to broadcast over our channel we can go to javascript part.
+
+    In app.js where we bootstraped the vue app , we can use Echo for listening
+    to the BroadcastChat private channel.and then push the message to chats
+    array. thats all for js part.
+    w

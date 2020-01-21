@@ -78798,18 +78798,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * create a fresh Vue application instance and attach it to the page.
+ * Then, you may begin adding components to this application
  */
 
 /* Components */
@@ -78831,6 +78825,13 @@ var app = new Vue({
     if (friendId != undefined) {
       axios.post('/chat/getChat/' + friendId).then(function (response) {
         _this.chats = response.data;
+      }); //this chat.friendId.userId because we we send a message to other
+      //persons computer the id of freind and user interchange
+
+      Echo["private"]('Chat.' + friendId + '.' + userId).listen('BroadcastChat', function (e) {
+        document.getElementById('chau').play();
+
+        _this.chats.push(e.chat);
       });
     }
   }

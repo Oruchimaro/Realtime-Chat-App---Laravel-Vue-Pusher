@@ -1,18 +1,10 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
  window.Vue = require('vue');
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * create a fresh Vue application instance and attach it to the page.
+ * Then, you may begin adding components to this application
  */
 
 /* Components */
@@ -37,6 +29,16 @@ require('./bootstrap');
             axios.post('/chat/getChat/' + friendId )
             .then((response) => {
                 this.chats = response.data;
+            });
+
+            //this chat.friendId.userId because we we send a message to other
+            //persons computer the id of freind and user interchange
+            Echo.private('Chat.' + friendId + '.' + userId)
+            .listen('BroadcastChat', (e) => {
+                //play a sound
+                document.getElementById('chau').play();
+
+                this.chats.push(e.chat); 
             });
         }
      },

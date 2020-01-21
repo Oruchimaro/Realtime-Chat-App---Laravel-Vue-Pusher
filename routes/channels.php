@@ -14,3 +14,10 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+
+Broadcast::channel('Chat.{user_id}.{friend_id}', function ($user, $user_id, $friend_id) {
+    //here we have to verify the user id which is passed by javascript and the
+    //user who is currently logged In.
+    return $user->id == $friend_id;
+});

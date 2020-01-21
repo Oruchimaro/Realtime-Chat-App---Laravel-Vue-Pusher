@@ -1,9 +1,14 @@
 @extends ('layouts.app')
 @section ('head')
+
 <meta name="friendId" content="{{ $friend->id }}">
+
+<audio id="chau">
+    <source src="{{ asset('sounds/chat.mp3') }}">
+</audio>
 @endsection
-@section ('content')
-<div class="container">
+
+@section ('content') <div class="container">
     <div class="column is-8 is-offset-2">
         <div class="panel">
             <div class="panel-heading">
