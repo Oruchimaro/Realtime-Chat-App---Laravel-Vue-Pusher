@@ -10,6 +10,7 @@ require('./bootstrap');
 /* Components */
  Vue.component('chat', require('./components/Chat.vue').default);
  Vue.component('chat-composer', require('./components/ChatComposer.vue').default);
+ Vue.component('onlineuser', require('./components/OnlineUser.vue').default);
 
 
 
@@ -17,7 +18,8 @@ require('./bootstrap');
      el: '#app',
 
      data: {
-        chats: ''
+        chats: '',
+        onlineUsers: ''
      },
 
      created() {
@@ -40,6 +42,21 @@ require('./bootstrap');
 
                 this.chats.push(e.chat); 
             });
+        }
+
+
+         //check if user is online
+        if (userId != 'null') { // 'null' cause in app.blade meta tag
+            Echo.join('Online')
+                .here((users) => {
+                    this.onlineUsers = users;
+                })
+                .joining((user) => {
+                    this.onlineUsers.push(user);
+                })
+                .leaving((user) => {
+                    this.onlineUsers = this.onlineUsers.filter((u) => {u != user});
+                });
         }
      },
  });

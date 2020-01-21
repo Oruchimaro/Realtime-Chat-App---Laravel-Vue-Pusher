@@ -3,10 +3,10 @@
         <div class="chat" v-if="chats.length != 0" >
             <div v-for="chat in chats" style="overflow:auto;">
                 <div class="chat-left" v-if="chat.user_id == userid">
-                    me : {{ chat.chat }}
+                    {{ chat.chat }}
                 </div>
                 <div class="chat-right" v-else >
-                    target: {{ chat.chat }}
+                    {{ chat.chat }}
                 </div>
             </div>
         </div>
@@ -36,6 +36,10 @@
     border: 1px solid grey;
     max-height: 600px;
     overflow-x: auto;
+    font-size:14px;
+    font-weight: 900;
+    font-family: Raleway;
+    letter-spacing: 2px;
 }
 .chat .chat-right, .chat .chat-left {
     max-width: 90%;

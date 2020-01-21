@@ -9,7 +9,10 @@
             </div>
             @forelse ($friends as $friend)
             <div class="panel-block">
-                <a href="{{ route('chat.show', $friend->id) }}"> {{ $friend->name }} </a>
+                <a href="{{ route('chat.show', $friend->id) }}" style="flex:1;">
+                    {{ $friend->name }}
+                </a>
+                <onlineuser :friend="{{ $friend }}" :onlineusers="onlineUsers"></onlineuser>
             </div>
             @empty
             <div class="panel-block">
