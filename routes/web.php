@@ -10,6 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /** ======================================================================== */
 Route::middleware('auth')->group(function () {
     Route::get('/friends', 'FriendController@index')->name('friends.index');
+    Route::post('/friends/add', 'FriendController@store')->name('friend.add');
 
     Route::get('/chat', 'ChatController@index')->name('chat.index');
     Route::get('/chat/{id}', 'ChatController@show')->name('chat.show');

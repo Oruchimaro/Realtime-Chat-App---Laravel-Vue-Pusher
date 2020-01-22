@@ -21,5 +21,9 @@
             @endforelse
         </div>
     </div>
+    <div class="column is-4 is-offset-2">
+        <a href="{{ route('friends.index') }}" class="button is-primary">Add a Friend</a>
+    </div>
+
 </div>
 @endsection

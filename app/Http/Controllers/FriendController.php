@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Friend;
+use App\User;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Isset_;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class FriendController extends Controller
 {
     public function index()
     {
+        return view('friend.index');
     }
 
     /**
@@ -24,15 +27,21 @@ class FriendController extends Controller
 
     public function store(Request $request)
     {
+        $emial = request('email');
         //Add a friend
-        $friend = Freind::create([
+        $friend = User::where('email', $emial)->first();
+        if (!isset($friend)) {
+            return redirect()->back();
+        }
+
+        //dd($friend);
+        Friend::create([
             'user_id' => auth()->id(),
-            'friend_id' => request('friend_id')
+            'friend_id' => $friend->id
         ]);
 
         //success message and redirect
-        Session::flash('success', 'Freindhas been added .');
-        return redirect()->back();
+        return redirect()->route('chat.index');
     }
 
     /**
